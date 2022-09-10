@@ -1,0 +1,4 @@
+Bienvenue dans le dossier général de l'hud ! 
+On va changer le texte "Ton Serveur" pour procéder il faut se rendre dans [ index.html ]
+une fois dedans à la ligne 19-20 vous changez le texte blanc avec votre serveur par exemple "Renomineria Roleplay"
+le reste vous n'avez pas besoin de changer car tous est déjà fais ! 

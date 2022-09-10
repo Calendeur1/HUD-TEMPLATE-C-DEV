@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://kit.fontawesome.com/42fa621c2c.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous"></script>
+  <script src="app.js"></script>
+  <link href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro@4cac1a6/css/all.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" type="text/css" href="dist/loading-bar.css"/>
+<script type="text/javascript" src="dist/loading-bar.js"></script>
+</head>
+<body>
+
+    <div class="serverlogo">
+        <h1>TON</h1> 
+        <h2>SERVEUR</h2>
+    </div>
+
+
+    <div class="calle" style="display: none;">
+      <i class="fas fa-location-arrow"></i>
+        <div class="hexape">
+        </div>
+        <h1 class="s1">First Street</h1>
+        <h2 class="s2">Second Street</h2>
+    </div>
+    <div class="carhudpe" style="display: none;">
+      <div class="letrahud">
+        <span class="velocidadtext">398</span>
+        <h1>KM/H</h1>
+      </div>
+
+      <div class="lineahud">
+        <div class="rellenolinea">
+          <div class="circulito"></div>
+        </div>
+      </div>
+
+      <div class="gasolina">
+        <div class="rellenogasolina"></div>
+        <span class="gasotext">100L</span>
+        <i class="fas fa-gas-pump"></i>
+      </div>
+
+      <div class="variadocar">
+        <i class="fad fa-car-battery"></i>
+          <img src="weapons/seatbelt.png" alt="">
+          <div class="circulocinturon"></div>
+          <div class="circulobateria"></div>
+      </div>
+
+      <div class="carhudatras">
+          <div class="lineas"></div>
+          <div class="lineas2"></div>
+          <div class="lineas3"></div>
+          <div class="lineas4"></div>
+          <div class="lineas5"></div>
+          <div class="lineas6"></div>
+          <div class="lineas7"></div>
+          <div class="lineas8"></div>
+          <div class="lineas9"></div>
+          <div class="lineas10"></div>
+          <div class="lineas11"></div>
+          <div class="lineas12"></div>
+          <div class="lineas13"></div>
+          <div class="lineas14"></div>
+          <div class="lineas15"></div>
+          <div class="lineas16"></div>
+          <div class="lineas17"></div>
+          <div class="lineas18"></div>
+          <div class="lineas19"></div>
+          <div class="lineas20"></div>
+          <div class="lineas21"></div>
+          <div class="lineas22"></div>
+          <div class="delante"></div>
+      </div>
+    </div>
+
+
+    <div class="hudanimado">
+      <div class="vida">
+        <div id="vidap" data-type="fill" data-img="weapons/cora.svg" class="ldBar" data-value = 40   data-img-size="50, 50"></div>
+      </div>
+      <div class="chaleco">
+        <div id="chalecop" data-type="fill" data-img="weapons/chaleco.svg" class="ldBar" data-value = 100   data-img-size="50, 50"></div>
+      </div>
+
+
+      <div class="burger">
+        <div id="burger" data-type="fill" data-img="weapons/burger.svg" class="ldBar" data-value = 100   data-img-size="50, 50"></div>
+      </div>  
+
+      <div class="water">
+        <div id="water" data-type="fill" data-img="weapons/water.svg" class="ldBar" data-value = 100   data-img-size="50, 50"></div>
+      </div> 
+
+      
+      <div class="stamina">
+        <div id="stamina" data-type="fill" data-img="weapons/correr.svg" class="ldBar" data-value = 100   data-img-size="50, 50"></div>
+      </div> 
+
+      <div class="swim">
+        <div id="swim" data-type="fill" data-img="weapons/swim.svg" class="ldBar" data-value = 80   data-img-size="50, 50"></div>
+      </div> 
+   </div>
+   
+   <style>
+    #voice {
+      position:absolute;
+      right: 20px;
+      bottom: 20px;
+      width: 2.5em;
+      height: 2.5em;
+      background-color: rgb(0, 0, 0, 0.5);
+      transform: rotateZ(270deg);
+      border-radius: 7px;
+      overflow: hidden;
+    }
+    #box {
+      width: 50%;
+      height: 100%;
+    }		
+    #box i {
+      position: absolute;
+      left: 12px;
+      top: 12px;
+      color: white;
+      transform: rotate(90deg);
+      z-index: 1;
+    }			
+    html {
+      height: 100%;
+      width:100%;
+    }
+
+    body {
+      overflow: hidden;
+      min-height: 100%;
+      width: 100%;
+    }
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="nui://game/ui/jquery.js" type="text/javascript"></script>
+  <script>	
+
+      $(function() {
+        var $level = $("#voice");
+        var $box = $("#box");
+
+        window.addEventListener('message', function(event){
+        
+          $('.container').css('display', event.data.show? 'none':'block');
+        
+           $box.css("width", event.data.level + "%");
+          
+           if (event.data.talking == true) 
+           {
+             $box.css("background", "#2111ef")
+           }
+           else if (event.data.talking == false)
+           {
+             $box.css("background", "#8e8e8e")
+           }
+          
+        }); 
+      });
+
+  </script>
+</head>
+  <div class="container">
+    <div id="voice">
+      <div id="box">
+        <i class="fas fa-microphone fa-lg"></i>
+      </div>
+    </div>
+  </div>
+
+    <div class="hudreal">
+      <div class="circulitovida3"></div>
+      <div class="circulitovida2">
+      </div>
+      <div id="chaleco" class="chart"></div>
+  
+      <div class="circulitocomida"></div>
+      <div class="circulitocomida2">
+        <i class="fad fa-utensils-alt"></i>
+      </div>
+      <div id="comida" class="chartcomida"></div>
+  
+      <div class="circulitoagua"></div>
+      <div class="circulitoagua2">
+        <i class="fas fa-tint"></i>
+      </div>
+      <div id="agua" class="chartagua"></div>
+  
+      <div class="circulitocora"></div>
+      <div class="circulitocora2">
+        <i class="fas fa-heart"></i>
+      </div>
+      <div id="cora" class="chartcora"></div>
+  
+  
+      <div class="corriendope">
+      <div class="circulitocorrer"></div>
+      <div class="circulitocorrer2">
+      </div>
+      <div id="correr" class="chartcorrer"></div>
+    </div>
+    
+      <div class="nadandope">
+      <div class="circulitonadar"></div>
+      <div class="circulitonadar2">
+      </div>
+      <div id="nadar" class="chartnadar"></div>
+    </div></div>
+
+    </div>
+   
+  </div>
+ 
+
+  <div class="changefont" id="mostrar" style="display: none;">
+      <div class="imagen1" id="letrauno">
+      </div>
+      <div class="imagen2" id="letrados">
+      </div>
+      <a class="boton"><span>Apply</span></a>
+  </div>
+
+</body>
+</html>
