@@ -31,4 +31,8 @@ function GetStatus(cb)
     end)
 
 end
-
+print("")
+        print("^1Créateur :Calendeur1#7501^0")
+        print("^2 Discord discord.gg/vr55VxmMEP^0")
+        print("^6Merci d'avoir téléchargé mon script^0")
+        print("")
